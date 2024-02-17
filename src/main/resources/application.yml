@@ -1,0 +1,21 @@
+server:
+  port: 8030
+  servlet:
+    context-path: /app
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    password: Harold123
+    url: jdbc:postgresql://localhost:5432/pizzeria
+    username: postgres
+  jpa:
+    database: POSTGRESQL
+    generate-ddl: true
+    hibernate.ddl-auto: create
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
