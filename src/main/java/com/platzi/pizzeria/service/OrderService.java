@@ -1,9 +1,9 @@
 package com.platzi.pizzeria.service;
 
-import com.platzi.pizzeria.persistence.entity.Order;
-import com.platzi.pizzeria.persistence.projection.OrderSummary;
-import com.platzi.pizzeria.persistence.repository.OrderRepository;
-import com.platzi.pizzeria.service.dto.RandomPizza;
+import com.platzi.pizzeria.entity.Order;
+import com.platzi.pizzeria.entity.projection.OrderSummary;
+import com.platzi.pizzeria.repository.OrderRepository;
+import com.platzi.pizzeria.entity.dto.RandomPizza;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

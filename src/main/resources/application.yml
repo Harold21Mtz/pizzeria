@@ -13,9 +13,19 @@ spring:
   jpa:
     database: POSTGRESQL
     generate-ddl: true
-    hibernate.ddl-auto: create
+    hibernate.ddl-auto: update
     show-sql: true
     open-in-view: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        hbm2ddl:
+          charset_name: UTF-8
+          import_files: sql/user.sql, sql/pizza.sql, sql/module.sql, sql/permission.sql, sql/role.sql, sql/role_permission.sql
+  logging:
+    level:
+      org.springframework.security.web.*: debug
+settings:
+  auth:
+    token-time: 30

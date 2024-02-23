@@ -2,16 +2,15 @@ package com.platzi.pizzeria.service;
 
 import com.platzi.pizzeria.common.exception.service.EmailApiException;
 import com.platzi.pizzeria.common.exception.service.ResourceNotFoundException;
-import com.platzi.pizzeria.persistence.entity.Pizza;
-import com.platzi.pizzeria.persistence.repository.PizzaPagSortRepository;
-import com.platzi.pizzeria.persistence.repository.PizzaRepository;
-import com.platzi.pizzeria.service.dto.UpdatePizzaPruiceDto;
+import com.platzi.pizzeria.entity.Pizza;
+import com.platzi.pizzeria.repository.PizzaPagSortRepository;
+import com.platzi.pizzeria.repository.PizzaRepository;
+import com.platzi.pizzeria.entity.dto.UpdatePizzaPruiceDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -98,7 +97,7 @@ public class PizzaService {
     public void updatePizzaPrice(UpdatePizzaPruiceDto dto){
         pizzaRepository.findById(dto.getPizzaId()).orElseThrow(() -> new ResourceNotFoundException("No existe la pizza a borrar"));
         pizzaRepository.updatepizzaPrice(dto);
-        sendEmail();
+        //sendEmail();
     }
 
     private void sendEmail() {

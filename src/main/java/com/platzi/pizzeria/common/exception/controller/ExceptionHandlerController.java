@@ -1,5 +1,6 @@
 package com.platzi.pizzeria.common.exception.controller;
 
+import com.platzi.pizzeria.common.exception.service.AuthenticationFailedException;
 import com.platzi.pizzeria.common.exception.service.ResourceNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ServerErrorException;
 
 import java.util.HashMap;
@@ -58,6 +60,17 @@ public class ExceptionHandlerController {
         map.put("error", "Bad Request");
         map.put("message", ex.getMessage());
         log.warn("IllegalArgumentException [{}]",ex.getMessage());
+        return map;
+    }
+
+    @ExceptionHandler(AuthenticationFailedException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map<String, String> authException(AuthenticationFailedException ex){
+        Map<String,String> map = new HashMap<>();
+        map.put("error", "Unauthorized");
+        map.put("message", ex.getMessage());
+        log.warn("AuthenticationFailedException [{}]", ex.getMessage());
         return map;
     }
 }
